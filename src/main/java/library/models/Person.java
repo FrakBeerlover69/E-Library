@@ -25,7 +25,7 @@ public class Person {
     @Min(value = 1900, message = "Minimum year of birth - 1900")
     @NotNull(message = "Enter year of birth")
     @Column(name = "yearOfBirth")
-    private Integer yearOfBirth;
+    private String yearOfBirth;
 
     @OneToMany(mappedBy = "owner")
     private List<Book> books;
@@ -38,11 +38,11 @@ public class Person {
         this.books = books;
     }
 
-    public Integer getYearOfBirth() {
+    public String getYearOfBirth() {
         return yearOfBirth;
     }
 
-    public void setYearOfBirth(Integer yearOfBirth) {
+    public void setYearOfBirth(String yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
     }
 

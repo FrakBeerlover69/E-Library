@@ -3,6 +3,7 @@ package library.controllers;
 import library.models.Book;
 import library.models.Person;
 import library.service.PeopleService;
+import library.util.validators.PersonValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,10 +19,13 @@ import java.util.List;
 public class PeopleController {
 
     private final PeopleService peopleService;
+    private final PersonValidator personValidator;
+
 
     @Autowired
-    public PeopleController(PeopleService peopleService) {
+    public PeopleController(PeopleService peopleService, PersonValidator personValidator) {
         this.peopleService = peopleService;
+        this.personValidator = personValidator;
     }
 
     @GetMapping()
@@ -53,6 +57,8 @@ public class PeopleController {
     @PostMapping()
     public String addNewPerson(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
 
+        personValidator.validate(person,bindingResult);
+
         if (bindingResult.hasErrors())
             return "people/new";
 
@@ -69,6 +75,8 @@ public class PeopleController {
 
     @PatchMapping("/{id}/edit")
     public String editPerson(@PathVariable("id") int person_id, @ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
+
+        personValidator.validate(person,bindingResult);
 
         if (bindingResult.hasErrors())
             return "people/editForm";
