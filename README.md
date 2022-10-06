@@ -7,7 +7,7 @@ I present to you my first web application that implements the basic and most nec
 
 Home page, allows you to move between user and book pages
 
-![desc](https://od.lk/d/NDZfMzI1NDU1NTBf/MainPage.png)
+![Main Page](https://od.lk/s/NDZfMzI1NDU1NTBf/MainPage.png)
 
 
 ## Book list page
